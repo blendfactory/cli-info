@@ -1,0 +1,7 @@
+name: cli_info_workspace
+
+environment:
+  sdk: ^3.3.0
+
+dev_dependencies:
+  melos: ^4.1.0

@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "dart-code.dart-code",
+    "blaugold.melos-code",
+    "djbkwon.flutter-dependency-docs",
+    "esbenp.prettier-vscode"
+  ]
+}

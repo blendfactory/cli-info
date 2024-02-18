@@ -1,0 +1,14 @@
+name: cli_info
+sdkPath: .dvm/dart_sdk
+
+packages:
+  - packages/*
+
+command:
+  bootstrap:
+    environment:
+      sdk: ^3.3.0
+
+ide:
+  intellij:
+    enabled: false
