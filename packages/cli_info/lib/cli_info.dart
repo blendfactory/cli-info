@@ -1,8 +1,12 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
-library;
+/// A class to pack information about a Dart CLI application.
+final class CliInfo {
+  const CliInfo({
+    required this.name,
+    required this.description,
+    required this.version,
+  });
 
-export 'src/cli_info_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.
+  final String name;
+  final String description;
+  final String version;
+}
