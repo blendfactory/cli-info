@@ -25,7 +25,7 @@
   "files.associations": {
     "*.json": "json"
   },
-  "[json]": {
+  "[json][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
