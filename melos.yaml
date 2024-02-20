@@ -18,6 +18,14 @@ command:
       test: ^1.25.2
       build_runner: ^2.4.8
 
+scripts:
+  regenerate_code:
+    run: dart run build_runner build -d
+    exec:
+      orderDependents: true
+    packageFilters:
+      dependsOn: build_runner
+
 ide:
   intellij:
     enabled: false
