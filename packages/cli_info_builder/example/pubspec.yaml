@@ -1,15 +1,16 @@
 name: example
-description: A sample command-line application.
+description: A example of cli_info_builder.
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+publish_to: none
 
 environment:
   sdk: ^3.3.0
 
-# Add regular dependencies here.
 dependencies:
-  # path: ^1.8.0
+  cli_info:
+    path: ../../cli_info
 
 dev_dependencies:
-  lints: ^3.0.0
-  test: ^1.24.0
+  cli_info_builder:
+    path: ..
+  build_runner: ^2.4.8
