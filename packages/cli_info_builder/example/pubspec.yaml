@@ -1,10 +1,14 @@
 name: example
 description: An example CLI application using cli_info_builder.
-version: 1.0.0
+version: 1.0.0-alpha
 publish_to: none
 
 environment:
   sdk: ^3.3.0
+
+executables:
+  demo:
+  eg: example
 
 dependencies:
   cli_info:
