@@ -1,5 +1,5 @@
 name: example
-description: A example of cli_info_builder.
+description: An example CLI application using cli_info_builder.
 version: 1.0.0
 publish_to: none
 
