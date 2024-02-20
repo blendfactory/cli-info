@@ -3,3 +3,6 @@
 .dart_tool/
 
 !pubspec.lock
+
+# Melos related
+pubspec_overrides.yaml
