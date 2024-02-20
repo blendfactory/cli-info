@@ -8,6 +8,10 @@ command:
   bootstrap:
     environment:
       sdk: ^3.3.0
+    dependencies:
+      build: ^2.4.1
+      build_config: ^1.1.1
+      yaml: ^3.1.2
     dev_dependencies:
       lints: ^3.0.0
       test: ^1.25.2
