@@ -1,0 +1,18 @@
+# see https://pub.dev/packages/build_config
+builders:
+  cli_info_builder:
+    import: "package:cli_info_builder/cli_info_builder.dart"
+    builder_factories:
+      - "builder"
+    build_extensions:
+      pubspec.yaml:
+        - ".dart"
+    auto_apply: "root_package"
+    build_to: "source"
+    defaults:
+      options:
+        executables-index: 0
+        output: "lib/gen/cli_info.dart"
+      generate_for:
+        include:
+          - "pubspec.yaml"
