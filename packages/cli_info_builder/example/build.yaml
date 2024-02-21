@@ -1,0 +1,7 @@
+targets:
+  $default:
+    builders:
+      cli_info_builder:
+        options:
+          executables-index: 1
+          output: "lib/gen/info.dart"
