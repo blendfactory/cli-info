@@ -26,6 +26,10 @@ scripts:
       orderDependents: true
     packageFilters:
       dependsOn: build_runner
+  test:
+    exec: dart test
+    packageFilters:
+      dependsOn: test
 
 ide:
   intellij:
