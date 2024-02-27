@@ -1,16 +1,67 @@
+import 'package:build/build.dart';
 import 'package:cli_info_builder/cli_info_builder.dart';
+import 'package:build_test/build_test.dart';
 import 'package:test/test.dart';
 
-void main() {
-  group('A group of tests', () {
-    final awesome = Awesome();
+void main() async {
+  test('CliInfoBuilder test', () async {
+    final builder = CliInfoBuilder(
+      BuilderOptions(
+        {
+          "executables-index": 1,
+          "output": "lib/gen/info.dart",
+        },
+      ),
+    );
 
-    setUp(() {
-      // Additional setup goes here.
-    });
+    const inputContent = '''
+name: example
+description: An example CLI application using cli_info_builder.
+version: 1.0.0-alpha
+publish_to: none
 
-    test('First Test', () {
-      expect(awesome.isAwesome, isTrue);
-    });
+environment:
+  sdk: ^3.3.0
+
+executables:
+  demo:
+  eg: example
+
+dependencies:
+  cli_info:
+    path: ../../cli_info
+
+dev_dependencies:
+  cli_info_builder:
+    path: ..
+  build_runner: ^2.4.8
+''';
+
+    const outputContent = '''
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:cli_info/cli_info.dart';
+
+const cliInfo = CliInfo(
+  name: 'eg',
+  description: 'An example CLI application using cli_info_builder.',
+  version: '1.0.0-alpha',
+);
+''';
+    await testBuilder(
+      builder,
+      {
+        'example|pubspec.yaml': inputContent,
+      },
+      reader: InMemoryAssetReader(rootPackage: 'example'),
+      writer: InMemoryAssetWriter(),
+      outputs: <String, String>{
+        'example|lib/gen/info.dart': outputContent,
+      },
+      onLog: print,
+    );
   });
 }
