@@ -1,0 +1,35 @@
+name: Check
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      # https://github.com/invertase/github-action-dart-analyzer
+      - name: Report analyze
+        uses: invertase/github-action-dart-analyzer@e981b01a458d0bab71ee5da182e5b26687b7101b # v3.0.0
+        with:
+          fatal-infos: true
+
+      - name: Regenerate code
+        run: melos run regenerate_code --no-select
+
+      - name: Check difference
+        run: |
+          git add -N .
+          git diff --name-only --exit-code
+
+      - name: Run test
+        run: melos run test --no-select
