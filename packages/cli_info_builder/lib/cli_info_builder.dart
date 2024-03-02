@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:build/build.dart';
+import 'package:dart_style/dart_style.dart';
 import 'package:yaml/yaml.dart';
 
 Builder builder(BuilderOptions options) => CliInfoBuilder(options);
@@ -69,22 +70,24 @@ class CliInfoBuilder implements Builder {
       return;
     }
 
-    await buildStep.writeAsString(
-      buildStep.allowedOutputs.single,
-      '''
+    final outputContents = """
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: lines_longer_than_80_chars
 
 import 'package:cli_info/cli_info.dart';
 
 const cliInfo = CliInfo(
   name: '$name',
-  description: '$description',
+  description: '''$description''',
   version: '$version',
 );
-''',
+""";
+    final formattedOutputContents = DartFormatter().format(outputContents);
+
+    await buildStep.writeAsString(
+      buildStep.allowedOutputs.single,
+      formattedOutputContents,
     );
   }
 }
