@@ -1,6 +1,6 @@
 name: cli_info_builder
 description: A package that provides a builder to generate a class to pack information about a Dart CLI application.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/blendfactory/cli-info
 
 environment:
